@@ -15,5 +15,21 @@
 
     <!-- You can also require other files to run in this process -->
     <script src="./renderer.js"></script>
+    <script>
+    // Détection Electron
+    const isElectron = typeof window.electronAPI !== 'undefined';
+    
+    if (isElectron) {
+        console.log('Mode Electron détecté');
+        
+        // Écoute des actions du menu
+        window.electronAPI.onMenuAction((action) => {
+            if (action === 'new-member') {
+                // Votre code pour nouveau membre
+                document.getElementById('new-subscriber-card')?.click();
+            }
+        });
+    }
+</script>
   </body>
 </html>
